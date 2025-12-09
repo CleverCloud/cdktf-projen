@@ -1,0 +1,201 @@
+// https://registry.terraform.io/providers/clevercloud/clevercloud/1.7.1/docs/resources/drain_newrelic
+// generated from terraform resource schema
+
+import { Construct } from 'constructs';
+import * as cdktf from 'cdktf';
+
+// Configuration
+
+export interface DrainNewrelicConfig extends cdktf.TerraformMetaArguments {
+  /**
+  * New Relic API key used for ingestion
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/clevercloud/clevercloud/1.7.1/docs/resources/drain_newrelic#api_key DrainNewrelic#api_key}
+  */
+  readonly apiKey: string;
+  /**
+  * either LOG, ACCESSLOG or AUDITLOG
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/clevercloud/clevercloud/1.7.1/docs/resources/drain_newrelic#kind DrainNewrelic#kind}
+  */
+  readonly kind?: string;
+  /**
+  * Application or product ID which support logs drains
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/clevercloud/clevercloud/1.7.1/docs/resources/drain_newrelic#resource_id DrainNewrelic#resource_id}
+  */
+  readonly resourceId: string;
+  /**
+  * New Relic log API URL (e.g. https://log-api.newrelic.com/log/v1 or https://log-api.eu.newrelic.com/log/v1)
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/clevercloud/clevercloud/1.7.1/docs/resources/drain_newrelic#url DrainNewrelic#url}
+  */
+  readonly url: string;
+}
+
+/**
+* Represents a {@link https://registry.terraform.io/providers/clevercloud/clevercloud/1.7.1/docs/resources/drain_newrelic clevercloud_drain_newrelic}
+*/
+export class DrainNewrelic extends cdktf.TerraformResource {
+
+  // =================
+  // STATIC PROPERTIES
+  // =================
+  public static readonly tfResourceType = "clevercloud_drain_newrelic";
+
+  // ==============
+  // STATIC Methods
+  // ==============
+  /**
+  * Generates CDKTF code for importing a DrainNewrelic resource upon running "cdktf plan <stack-name>"
+  * @param scope The scope in which to define this construct
+  * @param importToId The construct id used in the generated config for the DrainNewrelic to import
+  * @param importFromId The id of the existing DrainNewrelic that should be imported. Refer to the {@link https://registry.terraform.io/providers/clevercloud/clevercloud/1.7.1/docs/resources/drain_newrelic#import import section} in the documentation of this resource for the id to use
+  * @param provider? Optional instance of the provider where the DrainNewrelic to import is found
+  */
+  public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
+        return new cdktf.ImportableResource(scope, importToId, { terraformResourceType: "clevercloud_drain_newrelic", importId: importFromId, provider });
+      }
+
+  // ===========
+  // INITIALIZER
+  // ===========
+
+  /**
+  * Create a new {@link https://registry.terraform.io/providers/clevercloud/clevercloud/1.7.1/docs/resources/drain_newrelic clevercloud_drain_newrelic} Resource
+  *
+  * @param scope The scope in which to define this construct
+  * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
+  * @param options DrainNewrelicConfig
+  */
+  public constructor(scope: Construct, id: string, config: DrainNewrelicConfig) {
+    super(scope, id, {
+      terraformResourceType: 'clevercloud_drain_newrelic',
+      terraformGeneratorMetadata: {
+        providerName: 'clevercloud',
+        providerVersion: '1.7.1',
+        providerVersionConstraint: '~> 1.7.1'
+      },
+      provider: config.provider,
+      dependsOn: config.dependsOn,
+      count: config.count,
+      lifecycle: config.lifecycle,
+      provisioners: config.provisioners,
+      connection: config.connection,
+      forEach: config.forEach
+    });
+    this._apiKey = config.apiKey;
+    this._kind = config.kind;
+    this._resourceId = config.resourceId;
+    this._url = config.url;
+  }
+
+  // ==========
+  // ATTRIBUTES
+  // ==========
+
+  // api_key - computed: false, optional: false, required: true
+  private _apiKey?: string; 
+  public get apiKey() {
+    return this.getStringAttribute('api_key');
+  }
+  public set apiKey(value: string) {
+    this._apiKey = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get apiKeyInput() {
+    return this._apiKey;
+  }
+
+  // id - computed: true, optional: false, required: false
+  public get id() {
+    return this.getStringAttribute('id');
+  }
+
+  // kind - computed: true, optional: true, required: false
+  private _kind?: string; 
+  public get kind() {
+    return this.getStringAttribute('kind');
+  }
+  public set kind(value: string) {
+    this._kind = value;
+  }
+  public resetKind() {
+    this._kind = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get kindInput() {
+    return this._kind;
+  }
+
+  // resource_id - computed: false, optional: false, required: true
+  private _resourceId?: string; 
+  public get resourceId() {
+    return this.getStringAttribute('resource_id');
+  }
+  public set resourceId(value: string) {
+    this._resourceId = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get resourceIdInput() {
+    return this._resourceId;
+  }
+
+  // url - computed: false, optional: false, required: true
+  private _url?: string; 
+  public get url() {
+    return this.getStringAttribute('url');
+  }
+  public set url(value: string) {
+    this._url = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get urlInput() {
+    return this._url;
+  }
+
+  // =========
+  // SYNTHESIS
+  // =========
+
+  protected synthesizeAttributes(): { [name: string]: any } {
+    return {
+      api_key: cdktf.stringToTerraform(this._apiKey),
+      kind: cdktf.stringToTerraform(this._kind),
+      resource_id: cdktf.stringToTerraform(this._resourceId),
+      url: cdktf.stringToTerraform(this._url),
+    };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      api_key: {
+        value: cdktf.stringToHclTerraform(this._apiKey),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      kind: {
+        value: cdktf.stringToHclTerraform(this._kind),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      resource_id: {
+        value: cdktf.stringToHclTerraform(this._resourceId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      url: {
+        value: cdktf.stringToHclTerraform(this._url),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
+  }
+}
